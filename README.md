@@ -1,2 +1,2 @@
 # linklist
-Library of linklist functions
+Library of C linklist functions
