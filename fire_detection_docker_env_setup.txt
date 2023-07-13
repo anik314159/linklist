@@ -1,0 +1,16 @@
+docker run -ti -v "$PWD/activefire-main":/activefire-main --name fire_detection_ubuntu_20_v3 -it ubuntu:20.04 /bin/bash
+root@8c44d3282b5c:/# apt-get update
+root@8c44d3282b5c:/# apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+root@8c44d3282b5c:/# apt-get install wget
+root@8c44d3282b5c:/# wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+root@8c44d3282b5c:/# sha256sum /tmp/Anaconda3-2020.02-Linux-x86_64.sh
+root@8c44d3282b5c:/# bash /tmp/Anaconda3-2020.02-Linux-x86_64.sh
+root@8c44d3282b5c:/# source ~/.bashrc
+(base) root@8c44d3282b5c:/# conda update --all
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# pip install tensorflow==1.14
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# pip install keras==2.2.4
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# conda install -c conda-forge rasterio
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# python inference.py
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# python evaluate_v1.py
+(base) root@8c44d3282b5c:/activefire-main/src/train/kumar-roy/unet_16f_2conv_762# exit
+(base) swagata@01HW1957955:~/activefire-main/src/train/kumar-roy/unet_16f_2conv_762$ sudo docker commit 8c44d3282b5c ubuntu-20-0-4-fire-detection
